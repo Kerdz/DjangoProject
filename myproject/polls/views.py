@@ -10,6 +10,9 @@ from django.http import HttpResponse
 
 from .models import Question
 
+def home(request):
+    return render(request, 'index.html')
+
 
 def index(request):
     latest_question_list = Question.objects.order_by("-pub_date")[:5]
