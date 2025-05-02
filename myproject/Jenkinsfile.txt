@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage('Clone Repository') {
             steps {
-                git branch: 'main', url: 'https://github.com/Kerdz/gitLessons.git'
+                git branch: 'main', url: 'https://github.com/Kerdz/DjangoProject.git'
             }
         }
 
