@@ -2,15 +2,16 @@ from django.http import HttpResponse
 from django.template import loader
 from django.http import Http404
 from django.shortcuts import get_object_or_404, render
-
 from .models import Question
 
 
 def index(request):
+    questions = Question.objects.all()
     latest_question_list = Question.objects.order_by("-pub_date")[:5]
     template = loader.get_template("survey/index.html")
     context = {"latest_question_list": latest_question_list}
-    return HttpResponse(template.render(context, request))
+    return render(request, 'survey/index.html', {'questions': questions})
+
 
 def detail(request, question_id):
     question = get_object_or_404(Question, pk=question_id)

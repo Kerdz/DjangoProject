@@ -1,6 +1,15 @@
-<h1>{{ question.question_text }}</h1>
-<ul>
-{% for choice in question.choice_set.all %}
-    <li>{{ choice.choice_text }}</li>
-{% endfor %}
-</ul>
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="{% static 'survey/style.css' %}">
+</head>
+<body>
+    <h1>{{ question.question_text }}</h1>
+    <ul class="choices-list">
+        {% for choice in question.choice_set.all %}
+            <li class="choice-item">{{ choice.choice_text }} (Votes: {{ choice.votes }})</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
